@@ -83,6 +83,8 @@ const add: MathFunc = (x: number, y: number): number => x + y
 
 //* Classes
 //* inside class is public but you can choose private or protected, which means you can only access with in the class or extended from the class
+//* If you want to use an interface use implements and now :
+//* Ex class Person implements Person interface
 class Person {
   id: number
   name: string
@@ -92,3 +94,22 @@ class Person {
     this.name = name
   }
 }
+
+//* Subclasses to extend a class
+class Employee extends Person {
+  position: string
+
+  constructor(id: number, name: string, position: string) {
+    super(id, name)
+    this.position = position
+  }
+}
+
+//* Generics used to build reuseable components
+//*<T> is a place holder
+function getArray<T>(items: T[]): T[] {
+  return new Array().concat(items)
+}
+
+let numArray = getArray<number>([1, 2, 3, 4])
+let strArray = getArray<string>(['hello', 'world', 'string'])
